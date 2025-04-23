@@ -1,0 +1,15 @@
+<li
+  [class.editing]="state"
+  [class.completed]="todo.completed"
+>
+  <div
+    *ngIf="!state"
+    class="view"
+  >
+    <input class="toggle" type="checkbox" value="{{todo.completed}}" />
+    <label>{{ todo.title }}</label>
+    <button class="destroy"></button>
+  </div
+    >
+  <input *ngIf="state" class="edit" [value]="todo.title" />
+</li>
