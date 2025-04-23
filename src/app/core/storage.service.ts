@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Todo} from "./Todo";
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,11 @@ export class StorageService {
 
   constructor() { }
 
-  save(task: Task[]): void {
+  save(task: Todo[]): void {
     localStorage.setItem(this.key, JSON.stringify(task));
   }
 
-  readStorage() {
+  readStorage(){
     return JSON.parse(
       localStorage.getItem(this.key) || '[]'
     );

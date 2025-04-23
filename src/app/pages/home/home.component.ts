@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+
 import {Todo} from "../../core/Todo";
 import {TodoService} from "../../core/todo.service";
+import {Component} from "@angular/core";
+
 
 @Component({
   selector: 'app-home',
@@ -9,9 +11,18 @@ import {TodoService} from "../../core/todo.service";
 export class HomeComponent  {
 
   todos : Todo[]  = [];
-constructor(private todoService: TodoService) {
-  this.todos = this.todoService.Todos;
-}
 
+  constructor(private todoService: TodoService) {
+    this.updateTodos();
+  }
+
+
+  getTodos() : Todo[]{
+    return this.todoService.Todos;
+  }
+
+  updateTodos(){
+    this.todos = this.getTodos();
+  }
 
 }

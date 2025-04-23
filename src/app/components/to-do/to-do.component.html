@@ -1,15 +1,22 @@
 <li
   [class.editing]="state"
   [class.completed]="todo.completed"
+
 >
   <div
-    *ngIf="!state"
     class="view"
+    (dblclick)="handleEdit()"
   >
-    <input class="toggle" type="checkbox" value="{{todo.completed}}" />
+    <input class="toggle" type="checkbox" value="{{todo.completed}}" (click)="handleComplete()" />
     <label>{{ todo.title }}</label>
-    <button class="destroy"></button>
-  </div
-    >
-  <input *ngIf="state" class="edit" [value]="todo.title" />
+    <button class="destroy" (click)="handleDelete()"></button>
+  </div>
+  <input
+    [(ngModel)]="todo.title"
+    *ngIf="state"
+    class="edit"
+    autofocus
+    (keydown.enter)="handleSave()"
+    (keydown.escape)="handleEdit()"
+  />
 </li>
